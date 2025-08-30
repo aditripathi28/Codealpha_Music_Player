@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modern Music Player</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+<body>
+  <div class="player">
+    <div class="wrapper">
+      <header class="main">
+        <div id="logo"><i class="fa fa-music"></i> <span>Music Player</span></div>
+        <button class="theme-toggle" title="Toggle Theme" onclick="toggleTheme()">
+          <i class="material-icons">light_mode</i>
+        </button>
+      </header>
+
+      <section class="album-section">
+        <div class="img-area">
+          <img src="images/music-2.jpg" alt="Album Art" />
+        </div>
+        <div class="song-details">
+          <p class="name">Song Title</p>
+          <p class="artist">Artist Name</p>
+        </div>
+      </section>
+
+      <section class="progress-section">
+        <div class="progress-area">
+          <div class="progress-bar">
+            <audio id="main-audio" src=""></audio>
+            <span></span>
+          </div>
+        </div>
+        <div class="song-timer">
+          <span class="current-time">0:00</span>
+          <span class="max-duration">0:00</span>
+        </div>
+      </section>
+
+      <section class="volume-section">
+        <i class="fa fa-volume-down" aria-hidden="true"></i>
+        <input type="range" min="0" max="100" value="92" onchange="volume_change()" id="volume" />
+        <i class="fa fa-volume-up" aria-hidden="true" onclick="mute_sound()" id="volume_icon"></i>
+        <span id="volume_show">92</span>
+      </section>
+
+      <nav class="controls">
+        <button id="repeat-plist" class="icon-btn" title="Repeat Playlist">
+          <i class="material-icons">repeat</i>
+        </button>
+        <button id="prev" class="icon-btn" title="Previous">
+          <i class="material-icons">skip_previous</i>
+        </button>
+        <button class="play-pause icon-btn" title="Play/Pause">
+          <i class="material-icons play">play_arrow</i>
+        </button>
+        <button id="next" class="icon-btn" title="Next">
+          <i class="material-icons">skip_next</i>
+        </button>
+        <button id="more-music" class="icon-btn" title="Show Playlist">
+          <i class="material-icons">queue_music</i>
+        </button>
+      </nav>
+
+      <aside class="music-list">
+        <div class="header">
+          <div class="row">
+            <i class="list material-icons">queue_music</i>
+            <span>Music List</span>
+          </div>
+          <button id="close" class="icon-btn" title="Close">
+            <i class="material-icons">close</i>
+          </button>
+        </div>
+        <ul>
+          <!-- Song list will be injected by JS -->
+        </ul>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle("dark-theme");
+    }
+  </script>
+  <script src="music-list.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
